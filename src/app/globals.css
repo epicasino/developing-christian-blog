@@ -4,7 +4,7 @@
 
 @layer components {
   .navbar-links {
-    @apply transition hover:text-white/50 underline;
+    @apply transition hover:text-white/50 hover:underline;
   }
 }
 
@@ -34,4 +34,8 @@ h2 {
 
 h3 {
   @apply text-lg lg:text-2xl font-bold;
+}
+
+a {
+  text-decoration: none;
 }

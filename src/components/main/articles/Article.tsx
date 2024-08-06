@@ -4,7 +4,7 @@ import { iArticle } from './types';
 
 const Article: FC<iArticle> = ({ date, title, verse, text, image }) => {
   return (
-    <article className="min-h-[20vh] xl:w-[60vw] flex lg:flex-row flex-col p-10 gap-10 items-center justify-center transition hover:bg-zinc-800/50 m-5 rounded-md self-center">
+    <article className="min-h-[20vh] xl:w-[60vw] lg:w-[90vw] flex lg:flex-row flex-col p-10 gap-10 items-center justify-center transition hover:bg-zinc-800/50 m-5 rounded-md self-center">
       <div className="flex flex-col h-full gap-2 justify-center">
         <p className="font-light">{date}</p>
         <div className="flex flex-row justify-between items-end">
