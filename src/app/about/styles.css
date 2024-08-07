@@ -1,0 +1,7 @@
+p {
+  @apply indent-5;
+}
+
+h4 {
+  @apply text-lg font-semibold;
+}
