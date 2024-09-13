@@ -3,43 +3,53 @@ import MainArticle from '@/components/main/articles/MainArticle';
 import VerseOfTheDay from '@/components/main/verse-of-the-day/VerseOfTheDay';
 import ViewMorePosts from '@/components/main/view-more-posts/ViewMorePosts';
 import ContentBreak from '@/components/utils/ContentBreak';
+import { getAllPosts } from '@/utils/posts';
+import dayjs from 'dayjs';
 
-export default function Home() {
+const featuredPosts = async () => {
+  const posts = await getAllPosts().then((posts) => {
+    return posts.length > 4 ? posts.slice(0, 3) : posts;
+  });
+  return posts;
+};
+
+export default async function Home() {
+  const posts = await featuredPosts();
+  const latestPost = posts[0];
+  const threePosts = posts.slice(1, 3);
+  // console.log(posts);
+
   return (
-    <main className="min-h-screen flex flex-col">
+    <>
       <VerseOfTheDay />
       <ContentBreak />
-      <MainArticle
-        title="Example"
-        date="Aug. 4, 2024"
-        verse="John 3:16"
-        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. "
-        image="https://cdn.discordapp.com/attachments/1067264226533585056/1270105415190974464/ghastly.png?ex=66b27d58&is=66b12bd8&hm=7dbea665662de2ceda68d5000a51e440e85dafdc3184ab44742edadf0849882f&"
-      />
+      {latestPost && (
+        <MainArticle
+          title={latestPost.title}
+          date={dayjs(latestPost.date).format('MMM DD, YYYY')}
+          verse={latestPost.verse || ''}
+          text={latestPost.previewText}
+          image={latestPost.image[0].url}
+          slug={latestPost.slug}
+        />
+      )}
       <ContentBreak />
       <h2 className="self-center mt-10 border-b-2 pb-2">Recent Posts</h2>
-      <Article
-        title="Example"
-        date="Aug. 4, 2024"
-        verse="John 3:16"
-        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. "
-        image="https://cdn.discordapp.com/attachments/1067264226533585056/1270105415190974464/ghastly.png?ex=66b27d58&is=66b12bd8&hm=7dbea665662de2ceda68d5000a51e440e85dafdc3184ab44742edadf0849882f&"
-      />
-      <Article
-        title="Example"
-        date="Aug. 4, 2024"
-        verse="John 3:16"
-        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. "
-        image="https://cdn.discordapp.com/attachments/1067264226533585056/1270105415190974464/ghastly.png?ex=66b27d58&is=66b12bd8&hm=7dbea665662de2ceda68d5000a51e440e85dafdc3184ab44742edadf0849882f&"
-      />
-      <Article
-        title="Example"
-        date="Aug. 4, 2024"
-        verse="John 3:16"
-        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ex. Deleniti obcaecati doloribus ipsum dolore nostrum ullam, voluptate placeat labore sunt libero sapiente sed reiciendis magnam eius, quo, velit molestiae. "
-        image="https://cdn.discordapp.com/attachments/1067264226533585056/1270105415190974464/ghastly.png?ex=66b27d58&is=66b12bd8&hm=7dbea665662de2ceda68d5000a51e440e85dafdc3184ab44742edadf0849882f&"
-      />
+      {threePosts.map(
+        (post) =>
+          post && (
+            <Article
+              key={post.id}
+              title={post.title}
+              date={dayjs(post.date).format('MMM DD, YYYY')}
+              verse={post.verse || ''}
+              text={post.previewText}
+              image={post.image[0].url}
+              slug={post.slug}
+            />
+          )
+      )}
       <ViewMorePosts />
-    </main>
+    </>
   );
 }

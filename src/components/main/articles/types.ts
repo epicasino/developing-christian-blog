@@ -4,4 +4,5 @@ export interface iArticle {
   verse: string;
   text: string;
   image: string;
+  slug: string;
 }
