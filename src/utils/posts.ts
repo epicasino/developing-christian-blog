@@ -20,11 +20,12 @@ export const getAllPosts = async () => {
   const fetchedPosts: Array<iPost> = await fetch(
     `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_BLOG_ID}`,
     { cache: 'no-store' }
-  ).then((res) => res.json());
-  // enable this once we have a bit more recent posts
-  // .then((data) => {
-  //   return data.filter((post: iPost) => post.publish);
-  // });
+  )
+    .then((res) => res.json())
+    // enable this once we have a bit more recent posts
+    .then((data) => {
+      return data.filter((post: iPost) => post.publish);
+    });
   return fetchedPosts;
 };
 
@@ -34,7 +35,8 @@ export const getPost = async (slug: string) => {
   });
   if (postHeaders) {
     const fetchedPostBlocks = await fetch(
-      `https://notion-api.splitbee.io/v1/page/${postHeaders.id}`
+      `https://notion-api.splitbee.io/v1/page/${postHeaders.id}`,
+      { cache: 'no-store' }
     ).then((res) => res.json());
     // console.log(fetchedPostBlocks);
     return { postHeaders, fetchedPostBlocks };

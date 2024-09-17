@@ -13,7 +13,7 @@ const Article: FC<iArticle> = ({ date, title, verse, text, image, slug }) => {
         <section className="flex flex-col h-full gap-2 justify-center">
           <p className="font-light">{date}</p>
           <div className="flex flex-row justify-between items-end">
-            <h2>{title}</h2>
+            <h3>{title}</h3>
             <p>{verse}</p>
           </div>
           <p className="indent-4">

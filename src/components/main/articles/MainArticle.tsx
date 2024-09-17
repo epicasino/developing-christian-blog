@@ -13,10 +13,10 @@ const MainArticle: FC<iArticle> = ({
 }) => {
   return (
     <Link href={`/posts/${slug}`}>
-      <article className="min-h-[50vh] xl:w-[60vw] lg:w-[90vw] grid lg:grid-cols-2 p-10 items-center justify-center transition hover:bg-zinc-800/50 m-5 rounded-md gap-10 self-center">
+      <article className="min-h-[50vh] xl:w-[60vw] lg:w-[90vw] grid lg:grid-cols-2 pt-10 px-4 items-center justify-center transition hover:bg-zinc-800/50 m-5 rounded-md gap-10 self-center">
         <section className="flex flex-col h-full gap-2 justify-center">
           <p className="font-light">{date}</p>
-          <div className="flex flex-row justify-between items-end">
+          <div className="flex xl:flex-row flex-col xl:justify-between xl:items-end">
             <h2>{title}</h2>
             <p>{verse}</p>
           </div>

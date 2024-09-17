@@ -1,4 +1,5 @@
 import { getPost } from '@/utils/posts';
+import './styles.css';
 import Image from 'next/image';
 import React from 'react';
 import dayjs from 'dayjs';
@@ -12,19 +13,27 @@ export default async function Page({ params }: { params: { slug: string } }) {
   return (
     post && (
       <>
-        <header className="pt-[10vh] w-[60vw] flex flex-col items-center">
-          <h1>{post.postHeaders.title}</h1>
-          <h4 className="text-center">{post.postHeaders.subtitle}</h4>
-          <h5>{dayjs(post.postHeaders.date).format('MMM DD, YYYY')}</h5>
-          <Image
-            src={post.postHeaders.image[0].url}
-            alt="Blog Image (Replace Soon)"
-            width={0}
-            height={0}
-            className="w-[40vw]"
-            unoptimized
-          />
-          <h5>{`Verse of the Day: ${post.postHeaders.verse}` || ''}</h5>
+        <header className="pt-[10vh] xl:w-[60vw] md:w-[80vw] flex flex-col items-center gap-5 text-center">
+          <h1 className="text-5xl border-b-4 pb-3">{post.postHeaders.title}</h1>
+          <h2 className="w-full xl:w-[50vw]">{post.postHeaders.subtitle}</h2>
+          <div className="flex gap-10 w-full justify-center">
+            <h5>{`Published: ${dayjs(post.postHeaders.date).format(
+              'MMM DD, YYYY'
+            )}`}</h5>
+            {post.postHeaders.verse && (
+              <h5>{`Verse of the Day: ${post.postHeaders.verse}`}</h5>
+            )}
+          </div>
+          <div className="border-4 p-2 rounded-lg">
+            <Image
+              src={post.postHeaders.image[0].url}
+              alt="Blog Image (Replace Soon)"
+              width={0}
+              height={0}
+              className="w-fit xl:w-[50vw] rounded-md"
+              unoptimized
+            />
+          </div>
         </header>
         <NotionRenderer blockMap={post?.fetchedPostBlocks} />
       </>
