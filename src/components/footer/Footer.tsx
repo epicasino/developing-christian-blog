@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="h-[8vh] flex justify-between items-center px-10">
+    <footer className="h-[8vh] w-full flex justify-between items-center px-10">
       <h1>Romans 10:13</h1>
       <div className="flex flex-row gap-5">
         <a>

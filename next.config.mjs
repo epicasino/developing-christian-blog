@@ -4,10 +4,10 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.discordapp.com',
+        hostname: 'www.notion.so',
         port: '',
         pathname:
-          '/attachments/**',
+          '/image/**',
       },
     ],
   },

@@ -1,6 +1,6 @@
 export default function ViewMorePosts() {
   return (
-    <div className="relative transition duration-250 ease-in-out my-16 hover:scale-110">
+    <div className="relative transition duration-250 ease-in-out my-16 w-[60vw] hover:scale-110">
       <a
         className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold bg-zinc-950 px-20 py-3 rounded-lg lg:text-xl transition hover:bg-zinc-900 duration-250 ease-in-out text-lg"
         href="/posts"
