@@ -7,7 +7,7 @@ import './styles.css';
 
 export default function page() {
   return (
-    <main>
+    <main className="flex flex-col items-center w-full">
       <Header />
       <ContentBreak />
       <Quote />

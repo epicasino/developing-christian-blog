@@ -12,7 +12,7 @@ export default function Biography() {
       <section className="w-[80vw] flex flex-col gap-8 lg:text-[.95rem] xl:text-2xl">
         {paragraphs.map((paragraph) => {
           if (paragraph.type === 'p') {
-            return <p>{paragraph.text}</p>;
+            return <p key={paragraph.text}>{paragraph.text}</p>;
           }
           if (paragraph.type === 'bible' && paragraph.quote) {
             return (
@@ -20,20 +20,21 @@ export default function Biography() {
                 quote={paragraph.quote}
                 verse={paragraph.verse}
                 verseLink={paragraph.verseLink}
+                key={paragraph.quote}
               />
             );
           }
           if (paragraph.type === 'quote' && paragraph.quote) {
-            return <BibleQuote quote={paragraph.quote} />;
+            return <BibleQuote quote={paragraph.quote} key={paragraph.quote} />;
           }
           if (paragraph.type === 'break') {
-            return <ContentBreak />;
+            return <ContentBreak key={Math.random()} />;
           }
           if (paragraph.type === 'question' && paragraph.text) {
-            return <QAndABox text={paragraph.text} />;
+            return <QAndABox text={paragraph.text} key={paragraph.text} />;
           }
           if (paragraph.type === 'answer' && paragraph.text) {
-            return <QAndABox text={paragraph.text} />;
+            return <QAndABox text={paragraph.text} key={paragraph.text} />;
           }
           if (paragraph.type === 'bibleBig' && paragraph.quote) {
             return (
@@ -41,6 +42,7 @@ export default function Biography() {
                 quote={paragraph.quote}
                 verse={paragraph.verse}
                 verseLink={paragraph.verseLink}
+                key={paragraph.quote}
               />
             );
           }
