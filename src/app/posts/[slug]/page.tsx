@@ -1,10 +1,29 @@
-import { getPost } from '@/utils/posts';
+import { getPost, iPost } from '@/utils/posts';
 import './styles.css';
 import Image from 'next/image';
 import React from 'react';
 import dayjs from 'dayjs';
 
 import { NotionRenderer } from 'react-notion';
+import type { Metadata } from 'next';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const post = await getPost(params.slug);
+  const { postHeaders } = post || {};
+  if (postHeaders) {
+    return {
+      title: postHeaders.title,
+      description: postHeaders.previewText.slice(0, 10) + '...',
+    };
+  } else
+    return {
+      title: 'error fetching page',
+    };
+}
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug);

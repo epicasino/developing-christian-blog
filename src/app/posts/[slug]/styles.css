@@ -110,8 +110,7 @@ img.notion-page-icon {
 }
 
 .notion-list li {
-  padding: 4px 0px;
-  white-space: pre-wrap;
+  @apply leading-8 pt-1 whitespace-pre-wrap;
 }
 
 .notion-list > .notion-text {
