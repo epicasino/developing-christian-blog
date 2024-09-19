@@ -32,8 +32,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
   return (
     post && (
       <>
-        <header className="pt-[10vh] xl:w-[60vw] md:w-[80vw] flex flex-col items-center gap-5 text-center">
-          <h1 className="text-5xl border-b-4 pb-3">{post.postHeaders.title}</h1>
+        <header className="pt-[10vh] lg:px-0 lg:pb-0 p-4 xl:w-[60vw] md:w-[80vw] flex flex-col items-center gap-5 text-center">
+          <h1 className="lg:text-5xl border-b-4 pb-3">
+            {post.postHeaders.title}
+          </h1>
           <h2 className="w-full xl:w-[50vw]">{post.postHeaders.subtitle}</h2>
           <div className="flex gap-10 w-full justify-center">
             <h5>{`Published: ${dayjs(post.postHeaders.date).format(

@@ -1,5 +1,5 @@
 .notion {
-  @apply py-10 xl:w-[60vw] md:w-[80vw] text-xl;
+  @apply py-10 lg:px-0 px-4 xl:w-[60vw] md:w-[80vw] lg:text-xl;
 }
 
 .notion * {
