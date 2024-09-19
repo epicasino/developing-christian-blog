@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Navbar() {
   return (
-    <nav className="h-[10vh] w-screen flex justify-between items-center px-10 fixed bg-black/75">
+    <nav className="w-screen flex justify-between items-center px-10 py-2 fixed bg-black/75">
       <a href="/">
         <Image
           src={'/developing-christian-logo.svg'}
