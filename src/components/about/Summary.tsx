@@ -1,6 +1,3 @@
-import ContentBreak from '@/components/utils/ContentBreak';
-import React from 'react';
-
 export default function Summary() {
   return (
     <section className="flex flex-col items-center justify-center gap-24">
@@ -14,8 +11,9 @@ export default function Summary() {
       </h2>
       <article className="w-[80vw] xl:w-[70vw] flex flex-col items-center text-center gap-4 transition hover:scale-110">
         <h1>
-          "For you, Lord, have delivered me from death, my eyes from tears, my
-          feet from stumbling,"
+          {
+            'For you, Lord, have delivered me from death, my eyes from tears, my feet from stumbling,'
+          }
         </h1>
         <a
           className="transition hover:scale-110 hover:underline"
