@@ -1,6 +1,6 @@
 export default function Summary() {
   return (
-    <section className="flex flex-col items-center justify-center gap-24">
+    <section className="flex flex-col items-center justify-center gap-24 pb-10">
       <h2 className="w-[80vw] xl:w-[70vw] flex flex-col items-center text-center gap-6">
         I am an ordinary programmer who seeks to spread the love of God through
         the lens of an ordinary person, so that others may be delivered and

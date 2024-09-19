@@ -3,7 +3,7 @@ import ContentBreak from '../utils/ContentBreak';
 
 export default function Header() {
   return (
-    <header className="h-[50vh] flex items-center justify-center">
+    <header className="lg:h-[50vh] h-screen flex items-center justify-center">
       <div className="w-[80vw] xl:w-[50vw] flex flex-col items-center text-center gap-6">
         <h1 className="border-b-2 pb-2 xl:text-5xl">
           Hello and Welcome to the Developing Christian Blog.
